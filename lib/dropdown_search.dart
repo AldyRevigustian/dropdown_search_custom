@@ -675,7 +675,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
           right: widget.popupSafeArea.right,
           child: AlertDialog(
             elevation: widget.popupElevation,
-            contentPadding: EdgeInsets.all(0),
+            contentPadding: EdgeInsets.all(20),
             shape: widget.popupShape,
             backgroundColor: widget.popupBackgroundColor,
             content: _selectDialogInstance(),
@@ -701,45 +701,39 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
             padding =
                 padding.copyWith(bottom: mediaQueryData.viewPadding.bottom);
 
-          return AnimatedPadding(
-            duration: Duration(milliseconds: 300),
-            padding: EdgeInsets.only(
-              bottom: MediaQuery.of(ctx).viewInsets.bottom,
-            ),
-            child: Stack(
-              children: [
-                Container(
-                  width: double.infinity,
-                  margin: EdgeInsets.only(
-                    top: widget.popupSafeArea.top ? padding.top : 0,
-                  ),
-                  child: Material(
-                    color: widget.popupBackgroundColor ??
-                        Theme.of(ctx).canvasColor,
-                    shape: widget.popupShape,
-                    clipBehavior: Clip.antiAlias,
-                    elevation: widget.popupElevation,
-                    child: SafeArea(
-                      top: false,
-                      bottom: widget.popupSafeArea.bottom,
-                      left: widget.popupSafeArea.left,
-                      right: widget.popupSafeArea.right,
-                      child: _selectDialogInstance(defaultHeight: 350),
-                    ),
+          return Stack(
+            children: [
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.only(
+                  top: widget.popupSafeArea.top ? padding.top : 0,
+                ),
+                child: Material(
+                  color:
+                      widget.popupBackgroundColor ?? Theme.of(ctx).canvasColor,
+                  shape: widget.popupShape,
+                  clipBehavior: Clip.antiAlias,
+                  elevation: widget.popupElevation,
+                  child: SafeArea(
+                    top: false,
+                    bottom: widget.popupSafeArea.bottom,
+                    left: widget.popupSafeArea.left,
+                    right: widget.popupSafeArea.right,
+                    child: _selectDialogInstance(defaultHeight: 350),
                   ),
                 ),
-                // this part makes top padding tappable to be able to
-                // close the popup
-                GestureDetector(
-                  onTap: () => Navigator.of(context).pop(),
-                  behavior: HitTestBehavior.translucent,
-                  child: SizedBox(
-                    height: widget.popupSafeArea.top ? padding.top : 0,
-                    width: double.infinity,
-                  ),
-                )
-              ],
-            ),
+              ),
+              // this part makes top padding tappable to be able to
+              // close the popup
+              GestureDetector(
+                onTap: () => Navigator.of(context).pop(),
+                behavior: HitTestBehavior.translucent,
+                child: SizedBox(
+                  height: widget.popupSafeArea.top ? padding.top : 0,
+                  width: double.infinity,
+                ),
+              )
+            ],
           );
         });
   }
