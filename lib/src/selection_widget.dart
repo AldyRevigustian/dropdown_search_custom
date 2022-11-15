@@ -265,12 +265,9 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
                                 itemCount: snapshot.data!.length,
                                 itemBuilder: (context, index) {
                                   var item = snapshot.data![index];
-                                  return Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: widget.isMultiSelectionMode
-                                        ? _itemWidgetMultiSelection(item)
-                                        : _itemWidgetSingleSelection(item),
-                                  );
+                                  return widget.isMultiSelectionMode
+                                      ? _itemWidgetMultiSelection(item)
+                                      : _itemWidgetSingleSelection(item);
                                 },
                               ),
                             ),
@@ -487,17 +484,21 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
     return (widget.itemBuilder != null)
         ? InkWell(
             // ignore pointers in itemBuilder
-            child: IgnorePointer(
-              ignoring: true,
-              child: widget.itemBuilder!(
-                context,
-                item,
-                !widget.showSelectedItems ? false : _isSelectedItem(item),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IgnorePointer(
+                ignoring: true,
+                child: widget.itemBuilder!(
+                  context,
+                  item,
+                  !widget.showSelectedItems ? false : _isSelectedItem(item),
+                ),
               ),
             ),
             onTap: _isDisabled(item) ? null : () => _handleSelectedItem(item),
           )
         : ListTile(
+            contentPadding: EdgeInsets.all(8),
             enabled: !_isDisabled(item),
             title: Text(_selectedItemAsString(item)),
             selected: !widget.showSelectedItems ? false : _isSelectedItem(item),
