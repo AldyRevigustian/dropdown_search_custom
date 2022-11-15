@@ -500,7 +500,10 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
             enabled: !_isDisabled(item),
             title: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(_selectedItemAsString(item)),
+              child: Text(
+                _selectedItemAsString(item),
+                style: TextStyle(fontSize: 14),
+              ),
             ),
             selected: !widget.showSelectedItems ? false : _isSelectedItem(item),
             onTap: _isDisabled(item) ? null : () => _handleSelectedItem(item),
