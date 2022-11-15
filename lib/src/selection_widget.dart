@@ -266,7 +266,7 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
                                 itemBuilder: (context, index) {
                                   var item = snapshot.data![index];
                                   return Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(10.0),
                                     child: widget.isMultiSelectionMode
                                         ? _itemWidgetMultiSelection(item)
                                         : _itemWidgetSingleSelection(item),
