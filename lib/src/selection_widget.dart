@@ -495,6 +495,8 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
             onTap: _isDisabled(item) ? null : () => _handleSelectedItem(item),
           )
         : ListTile(
+            isThreeLine: false,
+            dense: true,
             enabled: !_isDisabled(item),
             title: Padding(
               padding: const EdgeInsets.all(8.0),
