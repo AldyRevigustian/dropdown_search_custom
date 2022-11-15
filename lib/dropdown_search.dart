@@ -664,7 +664,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
     return showGeneralDialog(
       barrierDismissible: widget.popupBarrierDismissible,
       barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
-      transitionDuration: const Duration(milliseconds: 400),
+      // transitionDuration: const Duration(milliseconds: 400),
       barrierColor: widget.popupBarrierColor ?? const Color(0x80000000),
       context: context,
       pageBuilder: (context, animation, secondaryAnimation) {
