@@ -230,7 +230,8 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
                               child: ListView.builder(
                                 shrinkWrap:
                                     widget.selectionListViewProps.shrinkWrap,
-                                padding: EdgeInsets.all(10),
+                                // padding: EdgeInsets.all(10),
+                                // padding: widget.selectionListViewProps.padding,
                                 scrollDirection: widget
                                     .selectionListViewProps.scrollDirection,
                                 reverse: widget.selectionListViewProps.reverse,
@@ -264,9 +265,12 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
                                 itemCount: snapshot.data!.length,
                                 itemBuilder: (context, index) {
                                   var item = snapshot.data![index];
-                                  return widget.isMultiSelectionMode
-                                      ? _itemWidgetMultiSelection(item)
-                                      : _itemWidgetSingleSelection(item);
+                                  return Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: widget.isMultiSelectionMode
+                                        ? _itemWidgetMultiSelection(item)
+                                        : _itemWidgetSingleSelection(item),
+                                  );
                                 },
                               ),
                             ),
