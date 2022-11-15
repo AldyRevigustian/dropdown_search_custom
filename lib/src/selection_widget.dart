@@ -230,7 +230,7 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
                               child: ListView.builder(
                                 shrinkWrap:
                                     widget.selectionListViewProps.shrinkWrap,
-                                padding: widget.selectionListViewProps.padding,
+                                padding: EdgeInsets.all(10),
                                 scrollDirection: widget
                                     .selectionListViewProps.scrollDirection,
                                 reverse: widget.selectionListViewProps.reverse,

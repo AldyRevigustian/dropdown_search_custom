@@ -675,7 +675,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
           right: widget.popupSafeArea.right,
           child: AlertDialog(
             elevation: widget.popupElevation,
-            contentPadding: EdgeInsets.all(20),
+            contentPadding: EdgeInsets.all(0),
             shape: widget.popupShape,
             backgroundColor: widget.popupBackgroundColor,
             content: _selectDialogInstance(),
